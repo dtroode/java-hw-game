@@ -1,6 +1,6 @@
 package com.company.creatures;
 
-import com.company.Base;
+import com.company.base.Base;
 import com.company.Main;
 import com.company.equipment.armour.Armour;
 import com.company.equipment.weapons.Weapon;

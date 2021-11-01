@@ -1,6 +1,6 @@
-package com.company;
+package com.company.controllers;
 
-import com.company.creatures.Creature;
+import com.company.Main;
 import com.company.creatures.Monster;
 
 import java.util.concurrent.ThreadLocalRandom;

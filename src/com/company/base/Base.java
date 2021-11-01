@@ -1,4 +1,4 @@
-package com.company;
+package com.company.base;
 
 public abstract class Base implements Printable {
     static protected String resetColor = "\u001b[38;5;0m";

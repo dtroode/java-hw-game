@@ -1,6 +1,6 @@
 package com.company.equipment;
 
-import com.company.Base;
+import com.company.base.Base;
 
 abstract public class Equipment extends Base {
     protected int price;

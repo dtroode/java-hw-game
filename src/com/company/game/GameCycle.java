@@ -1,5 +1,8 @@
-package com.company;
+package com.company.game;
 
+import com.company.Main;
+import com.company.controllers.HeroCreatureController;
+import com.company.controllers.MonsterCreatureController;
 import com.company.creatures.Monster;
 
 import java.util.concurrent.ExecutorService;

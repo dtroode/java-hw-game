@@ -1,4 +1,6 @@
-package com.company;
+package com.company.game;
+
+import com.company.Main;
 
 public class Map {
     public void prepare() {

@@ -1,6 +1,6 @@
 package com.company.equipment;
 
-import com.company.Base;
+import com.company.base.Base;
 
 public class Heal extends Equipment {
     private int heal;

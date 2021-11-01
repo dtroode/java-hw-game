@@ -1,15 +1,16 @@
-package com.company;
+package com.company.controllers;
 
-import com.company.creatures.Creature;
+import com.company.Main;
+import com.company.creatures.Hero;
 import com.company.creatures.Monster;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class HeroCreatureController implements Runnable {
-    private Creature hero;
+    private Hero hero;
 
-    public HeroCreatureController(Creature hero) {
+    public HeroCreatureController(Hero hero) {
         this.hero = hero;
     }
 
@@ -18,11 +19,10 @@ public class HeroCreatureController implements Runnable {
     public void run() {
         Thread.currentThread().setName("hero");
         while (Main.hero != null && !Main.monsters.isEmpty()) {
-            Monster enemy = Main.GameLogic.checkForFight();
+            Monster enemy = Main.gameLogic.checkForFight();
 
             if (enemy != null) {
-                System.out.println(enemy.getName());
-                Main.GameLogic.startFight(Main.hero, enemy);
+                Main.gameLogic.startFight(Main.hero, enemy);
             } else {
                 String move = moves[ThreadLocalRandom.current().nextInt(moves.length)];
                 switch (move) {
