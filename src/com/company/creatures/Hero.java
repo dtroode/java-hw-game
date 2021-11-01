@@ -60,7 +60,6 @@ public class Hero<S1 extends Spell<?>, S2 extends Spell<?>, S3 extends Spell<?>>
         if (willUseThisEquipment(weapon.getReqLevel())) {
             this.weapon = weapon;
         } else {
-            this.weapon = null;
             System.out.println("Игрок не может использовать данное оружие в силу уровня, слот остаётся пустым.");
         }
     }
@@ -68,7 +67,6 @@ public class Hero<S1 extends Spell<?>, S2 extends Spell<?>, S3 extends Spell<?>>
         if (willUseThisEquipment(armour.getReqLevel())) {
             this.armour = armour;
         } else {
-            this.armour = null;
             System.out.println("Игрок не может использовать данную броню в силу уровня, слот остаётся пустым.");
         }
     }

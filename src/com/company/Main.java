@@ -43,7 +43,7 @@ public class Main {
         private static final String[] names = new String[] {"Ваня", "Саня", "Ивтихий", "Арсений", "Роберто", "Льюис"};
         private static final String[] monstertypes = new String[] {"Орк", "Зомби", "Собака", "Либерал", "Инцел"};
         private static final String[] herotypes = new String[] {"Маг", "Грибник"};
-        private static final String[] weapontypes = new String[] {"ПП"};
+        private static final String[] weapontypes = new String[] {"ПП", "Пулемёт"};
         private static final String[] spelltypes = new String[] {};
 
         private static final int monstersNumber = 3;
@@ -55,6 +55,10 @@ public class Main {
                 switch (weapontype) {
                     case "ПП":
                         weapons.add(new PP());
+                        break;
+                    case "Пулемёт":
+                        weapons.add(new MachineGun());
+                        break;
                 }
             }
         }
@@ -66,7 +70,7 @@ public class Main {
             int weaponnumber = ThreadLocalRandom.current().nextInt(weapons.size());
 
             Hero<Spell<Fire>, Spell<Fire>, Spell<Fire>> freshHero = new Hero<>(herotype, heroname,
-                    ThreadLocalRandom.current().nextInt(50, 100),
+                    ThreadLocalRandom.current().nextInt(50, 200),
                     0, 1, 0,
                     ThreadLocalRandom.current().nextInt(15, 50),
                     weapons.get(weaponnumber),
@@ -108,6 +112,20 @@ public class Main {
             int i = ThreadLocalRandom.current().nextInt(0, 1);
             if (i == 0) attackWithWeapon(c1, c2);
             else attackWithWeapon(c2, c1);
+        }
+
+        public static boolean checkIfWeaponBetter(Weapon w1, Weapon w2) {
+            if (w1.getDamage() > w2.getDamage()) {
+                return true;
+            }
+            return false;
+        }
+
+        public static boolean checkIfArmourBetter(Armour a1, Armour a2) {
+            if (a1.getHealth() > a2.getHealth()) {
+                return true;
+            }
+            return false;
         }
 
         public static int countDamage(Creature creature) {
@@ -170,8 +188,20 @@ public class Main {
                         monsters.remove(p2);
                         enemyThread.interrupt();
 
-                        System.out.println(attackerName + " убил " + defenderName);
-                        System.out.println("У " + attackerName + " осталось: " + p1.getArmour().getHealth() + " единиц щита и " + p1.getHealth() + " единиц здоровья.");
+                        // Заменяем оружие героя на оружие моба, если у моба оружие лучше
+                        if (checkIfWeaponBetter(p2.getWeapon(), p1.getWeapon())) {
+                            p1.setWeapon(p2.getWeapon());
+                            System.out.println("У поверженного моба оружие было лучше, герой берёт его");
+                        }
+
+                        // Заменяем щит героя на щит моба, если у моба щит лучше
+                        if (checkIfArmourBetter(p2.getArmour(), p1.getArmour())) {
+                            p1.setArmour(p2.getArmour());
+                            System.out.println("У поверженного моба щит был лучше, герой берёт его");
+                        }
+
+                        System.out.println("Вы убили " + defenderName);
+                        System.out.println("У вас осталось: " + p1.getArmour().getHealth() + " единиц щита и " + p1.getHealth() + " единиц здоровья.");
                     }
                     return;
                 }
