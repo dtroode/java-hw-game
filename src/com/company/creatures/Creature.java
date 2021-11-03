@@ -72,7 +72,7 @@ public abstract class Creature extends Base {
     public abstract void setWeapon(Weapon weapon);
     public synchronized Armour getArmour() { return armour; }
     public abstract void setArmour(Armour armour);
-    public int getId() { return this.id; }
+    public synchronized int getId() { return this.id; }
 
 
     public synchronized int getX() { return x; }
