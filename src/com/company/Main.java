@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class Main {
     public static int polygonSize = 5;
-    public static Random rnd = new Random();
+
     public static ArrayList<Weapon> weapons = new ArrayList<>();
     public static ArrayList<Monster> monsters = new ArrayList<>();
     public static Hero hero;
@@ -26,11 +26,9 @@ public class Main {
     public static Map map = new Map();
     public static GameCycle gameCycle = new GameCycle();
     public static MapDrawer mapDrawer = new MapDrawer();
-
     public static GameLogic gameLogic = new GameLogic();
 
     public static void main(String[] args) {
-        map.prepare();
         GameLogic.generateWeapons();
         GameLogic.generateHero();
         GameLogic.generateMonsters();
