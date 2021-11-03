@@ -78,8 +78,6 @@ public class GameLogic {
         for (int count = 0; count < Main.monsters.size(); count++) {
             if (heroX == Main.monsters.get(count).getX() && heroY == Main.monsters.get(count).getY()) {
                 System.out.println("Вы встретили моба " + Main.monsters.get(count).getName() + ". Сейчас будет мочилово.");
-                System.out.println(heroX + " " + heroY);
-                System.out.println(Main.monsters.get(count).getX() + " " + Main.monsters.get(count).getY());
                 return(Main.monsters.get(count));
             }
         }
@@ -107,7 +105,7 @@ public class GameLogic {
     }
 
     public static int countDamage(Creature creature) {
-        boolean didHit = Main.rnd.nextBoolean();
+        boolean didHit = ThreadLocalRandom.current().nextBoolean();
 
         if (!didHit) return 0;
         if (creature.getWeapon() != null) {
