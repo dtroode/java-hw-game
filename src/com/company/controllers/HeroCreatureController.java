@@ -39,10 +39,10 @@ public class HeroCreatureController implements Runnable {
                         hero.MoveRight();
                         break;
                 }
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException e) {
-                }
+            }
+            try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
             }
         }
     }
