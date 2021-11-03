@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GameCycle implements Runnable {
-    public static ExecutorService cycleExecutor = Executors.newCachedThreadPool();
+    private static ExecutorService cycleExecutor = Executors.newCachedThreadPool();
 
     public void run() {
         cycleExecutor.execute(new HeroCreatureController(Main.hero));
